@@ -1,0 +1,120 @@
+---- mtdparts Matches (135 in 15 files) ----
+config_cmd_all.h (include) line 37 : #define CONFIG_CMD_MTDPARTS	/* mtd parts support		*/
+config_whitelist.txt (scripts) line 588 : CONFIG_CMD_MTDPARTS
+config_whitelist.txt (scripts) line 589 : CONFIG_CMD_MTDPARTS_SPREAD
+config_whitelist.txt (scripts) line 3120 : CONFIG_MTDPARTS
+config_whitelist.txt (scripts) line 6349 : CONFIG_SYS_MTDPARTS_RUNTIME
+dfu_fill_entity_nand in dfu_nand.c (drivers\dfu) : 		mtdparts_init();
+fb_nand_lookup in fb_nand.c (common) : 	ret = mtdparts_init();
+fb_nand_lookup in fb_nand.c (common) : 		fastboot_fail("cannot init mtdparts");
+fdt_support.c (common) line 902 : void fdt_fixup_mtdparts(void *blob, void *node_info, int node_info_size)
+fdt_fixup_mtdparts in fdt_support.c (common) : 	parts = getenv("mtdparts");
+fdt_fixup_mtdparts in fdt_support.c (common) : 	if (mtdparts_init() != 0)
+fdt_support.h (include) line 192 : void fdt_fixup_mtdparts(void *fdt, void *node_info, int node_info_size);
+fdt_support.h (include) line 194 : static inline void fdt_fixup_mtdparts(void *fdt, void *node_info,
+flash.c (cmd) line 18 : #if defined(CONFIG_CMD_MTDPARTS)
+flash.c (cmd) line 22 : int mtdparts_init(void);
+do_flerase in flash.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS)
+do_flerase in flash.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS)
+do_flerase in flash.c (cmd) : 		mtdparts_init();
+do_protect in flash.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS)
+do_protect in flash.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS)
+do_protect in flash.c (cmd) : 		mtdparts_init();
+flash.c (cmd) line 671 : #if defined(CONFIG_CMD_MTDPARTS)
+jffs2.c (cmd) line 120 : #ifdef CONFIG_CMD_MTDPARTS
+jffs2.c (cmd) line 144 : #ifndef CONFIG_CMD_MTDPARTS
+jffs2.c (cmd) line 330 : int mtdparts_init(void)
+mtdparts_init in jffs2.c (cmd) : 	DEBUGF("\n---mtdparts_init---\n");
+do_jffs2_fsload in jffs2.c (cmd) : 	if (mtdparts_init() !=0)
+do_jffs2_ls in jffs2.c (cmd) : 	if (mtdparts_init() !=0)
+do_jffs2_fsinfo in jffs2.c (cmd) : 	if (mtdparts_init() !=0)
+Kconfig (lib) line 158 : 	bool "overwrite MTD partitions in DTS through defined in 'mtdparts'"
+Kconfig (lib) line 163 : 	  using partition info defined in the 'mtdparts' environment
+load_kernel.h (include\jffs2) line 64 : extern int mtdparts_init(void);
+Makefile (cmd) line 98 : obj-$(CONFIG_CMD_MTDPARTS) += mtdparts.o
+mtdcore.c (drivers\mtd) line 787 : #if defined(CONFIG_CMD_MTDPARTS_SPREAD)
+mtdparts.c (cmd) line 115 : #if !defined(MTDPARTS_DEFAULT)
+mtdparts.c (cmd) line 116 : #define MTDPARTS_DEFAULT NULL
+mtdparts.c (cmd) line 118 : #if defined(CONFIG_SYS_MTDPARTS_RUNTIME)
+mtdparts.c (cmd) line 119 : extern void board_mtdparts_default(const char **mtdids, const char **mtdparts);
+mtdparts.c (cmd) line 122 : static const char *mtdparts_default = MTDPARTS_DEFAULT;
+mtdparts.c (cmd) line 126 : #define MTDPARTS_MAXLEN		512
+mtdparts.c (cmd) line 129 : static char last_parts[MTDPARTS_MAXLEN];
+mtdparts.c (cmd) line 1073 : static int generate_mtdparts(char *buf, u32 buflen)
+generate_mtdparts in mtdparts.c (cmd) : 	debug("--- generate_mtdparts ---\n");
+generate_mtdparts in mtdparts.c (cmd) : 	strcpy(p, "mtdparts=");
+mtdparts.c (cmd) line 1201 : static int generate_mtdparts_save(char *buf, u32 buflen)
+generate_mtdparts_save in mtdparts.c (cmd) : 	ret = generate_mtdparts(buf, buflen);
+generate_mtdparts_save in mtdparts.c (cmd) : 		setenv("mtdparts", buf);
+generate_mtdparts_save in mtdparts.c (cmd) : 		setenv("mtdparts", NULL);
+mtdparts.c (cmd) line 1215 : #if defined(CONFIG_CMD_MTDPARTS_SHOW_NET_SIZES)
+print_partition_table in mtdparts.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS_SHOW_NET_SIZES)
+list_partitions in mtdparts.c (cmd) : 	puts("mtdparts: ");
+list_partitions in mtdparts.c (cmd) : 	puts(mtdparts_default ? mtdparts_default : "none");
+delete_partition in mtdparts.c (cmd) : 		if (generate_mtdparts_save(last_parts, MTDPARTS_MAXLEN) != 0) {
+delete_partition in mtdparts.c (cmd) : 			printf("generated mtdparts too long, resetting to null\n");
+mtdparts.c (cmd) line 1425 : #if defined(CONFIG_CMD_MTDPARTS_SPREAD)
+spread_partitions in mtdparts.c (cmd) : 	if (generate_mtdparts_save(last_parts, MTDPARTS_MAXLEN) != 0) {
+spread_partitions in mtdparts.c (cmd) : 		printf("generated mtdparts too long, resetting to null\n");
+mtdparts.c (cmd) line 1528 : static const char *getenv_mtdparts(char *buf)
+getenv_mtdparts in mtdparts.c (cmd) : 		return getenv("mtdparts");
+getenv_mtdparts in mtdparts.c (cmd) : 	if (getenv_f("mtdparts", buf, MTDPARTS_MAXLEN) != -1)
+mtdparts.c (cmd) line 1544 : static int parse_mtdparts(const char *const mtdparts)
+parse_mtdparts in mtdparts.c (cmd) : 	char tmp_parts[MTDPARTS_MAXLEN];
+parse_mtdparts in mtdparts.c (cmd) : 	debug("\n---parse_mtdparts---\nmtdparts = %s\n\n", p);
+parse_mtdparts in mtdparts.c (cmd) : 	p = getenv_mtdparts(tmp_parts);
+parse_mtdparts in mtdparts.c (cmd) : 		p = mtdparts;
+parse_mtdparts in mtdparts.c (cmd) : 	if (strncmp(p, "mtdparts=", 9) != 0) {
+parse_mtdparts in mtdparts.c (cmd) : 		printf("mtdparts variable doesn't start with 'mtdparts='\n");
+parse_mtdparts in mtdparts.c (cmd) : 			printf("device %s%d redefined, please correct mtdparts variable\n",
+mtdparts.c (cmd) line 1712 : int mtdparts_init(void)
+mtdparts_init in mtdparts.c (cmd) : 	char tmp_parts[MTDPARTS_MAXLEN];
+mtdparts_init in mtdparts.c (cmd) : 	debug("\n---mtdparts_init---\n");
+mtdparts_init in mtdparts.c (cmd) : 		memset(last_parts, 0, MTDPARTS_MAXLEN);
+mtdparts_init in mtdparts.c (cmd) : #if defined(CONFIG_SYS_MTDPARTS_RUNTIME)
+mtdparts_init in mtdparts.c (cmd) : 		board_mtdparts_default(&mtdids_default, &mtdparts_default);
+mtdparts_init in mtdparts.c (cmd) : 	parts = getenv_mtdparts(tmp_parts);
+mtdparts_init in mtdparts.c (cmd) : 		if (mtdparts_default && use_defaults) {
+mtdparts_init in mtdparts.c (cmd) : 			parts = mtdparts_default;
+mtdparts_init in mtdparts.c (cmd) : 			if (setenv("mtdparts", (char *)parts) == 0)
+mtdparts_init in mtdparts.c (cmd) : 			printf("mtdparts variable not set, see 'help mtdparts'\n");
+mtdparts_init in mtdparts.c (cmd) : 	if (parts && (strlen(parts) > MTDPARTS_MAXLEN - 1)) {
+mtdparts_init in mtdparts.c (cmd) : 		printf("mtdparts too long (> %d)\n", MTDPARTS_MAXLEN);
+mtdparts_init in mtdparts.c (cmd) : 		if (parse_mtdparts(parts) != 0)
+mtdparts_init in mtdparts.c (cmd) : 			printf("mtdparts_init: no valid partitions\n");
+mtdparts_init in mtdparts.c (cmd) : 		strncpy(last_parts, parts, MTDPARTS_MAXLEN);
+mtdparts_init in mtdparts.c (cmd) : 		debug("mtdparts_init: current_mtd_dev  = %s%d, current_mtd_partnum = %d\n",
+do_chpart in mtdparts.c (cmd) : 	if (mtdparts_init() !=0)
+mtdparts.c (cmd) line 1946 : static int do_mtdparts(cmd_tbl_t *cmdtp, int flag, int argc,
+do_mtdparts in mtdparts.c (cmd) : 			setenv("mtdparts", NULL);
+do_mtdparts in mtdparts.c (cmd) : 			mtdparts_init();
+do_mtdparts in mtdparts.c (cmd) : 			mtdparts_init();
+do_mtdparts in mtdparts.c (cmd) : 			setenv("mtdparts", NULL);
+do_mtdparts in mtdparts.c (cmd) : 	if (mtdparts_init() != 0)
+do_mtdparts in mtdparts.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS_SPREAD)
+do_mtdparts in mtdparts.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS_SPREAD)
+do_mtdparts in mtdparts.c (cmd) : 		if (generate_mtdparts_save(last_parts, MTDPARTS_MAXLEN) != 0) {
+do_mtdparts in mtdparts.c (cmd) : 			printf("generated mtdparts too long, resetting to null\n");
+do_mtdparts in mtdparts.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS_SPREAD)
+mtdparts.c (cmd) line 2073 : static char mtdparts_help_text[] =
+mtdparts.c (cmd) line 2076 : 	"mtdparts delall\n"
+mtdparts.c (cmd) line 2078 : 	"mtdparts del part-id\n"
+mtdparts.c (cmd) line 2080 : 	"mtdparts add <mtd-dev> <size>[@<offset>] [<name>] [ro]\n"
+mtdparts.c (cmd) line 2082 : #if defined(CONFIG_CMD_MTDPARTS_SPREAD)
+mtdparts.c (cmd) line 2083 : 	"mtdparts add.spread <mtd-dev> <size>[@<offset>] [<name>] [ro]\n"
+mtdparts.c (cmd) line 2086 : 	"mtdparts default\n"
+mtdparts.c (cmd) line 2088 : #if defined(CONFIG_CMD_MTDPARTS_SPREAD)
+mtdparts.c (cmd) line 2089 : 	"mtdparts spread\n"
+mtdparts.c (cmd) line 2091 : 	"      at least as big as the mtdparts variable specifies\n"
+mtdparts.c (cmd) line 2107 : 	"'mtdparts' - partition list\n\n"
+mtdparts.c (cmd) line 2108 : 	"mtdparts=mtdparts=<mtd-def>[;<mtd-def>...]\n\n"
+U_BOOT_CMD in mtdparts.c (cmd) : 	mtdparts,	6,	0,	do_mtdparts,
+U_BOOT_CMD in mtdparts.c (cmd) : 	"define flash/nand partitions", mtdparts_help_text
+get_part in mtd_uboot.c (drivers\mtd) : #ifdef CONFIG_CMD_MTDPARTS
+get_part in mtd_uboot.c (drivers\mtd) : 	ret = mtdparts_init();
+get_part in mtd_uboot.c (drivers\mtd) : 	puts("mtdparts support missing.\n");
+nand.c (cmd) line 32 : #if defined(CONFIG_CMD_MTDPARTS)
+nand.c (cmd) line 35 : int mtdparts_init(void);
+do_nandboot in nand.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS)
+do_nandboot in nand.c (cmd) : 		if (!(str2long(p, &addr)) && (mtdparts_init() == 0) &&
+do_nandboot in nand.c (cmd) : #if defined(CONFIG_CMD_MTDPARTS)
